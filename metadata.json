@@ -1,0 +1,6 @@
+{
+  "name": "Nyksys — Architecture d'Intérieur",
+  "description": "Là où commencent les intérieurs intemporels. Studio d'architecture d'intérieur haut de gamme avec défilement parallaxe immersif et espaces sur-mesure.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

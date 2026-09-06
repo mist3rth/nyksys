@@ -1,0 +1,23 @@
+{
+  "name": "Nyksys — Architecture d'Intérieur",
+  "short_name": "Nyksys",
+  "description": "Studio d'architecture d'intérieur haut de gamme : conception sur-mesure et résidences d'exception.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d0c0b",
+  "theme_color": "#0d0c0b",
+  "icons": [
+    {
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
