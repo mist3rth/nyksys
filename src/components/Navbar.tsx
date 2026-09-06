@@ -59,10 +59,10 @@ export const Navbar: React.FC<NavbarProps> = ({
       <header
         id="main-navbar"
         role="banner"
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b ${
           isScrolled
-            ? 'bg-[#0e0d0c]/85 backdrop-blur-md py-4 border-b border-white/10 shadow-lg'
-            : 'bg-transparent py-7 md:py-8'
+            ? 'bg-[#0e0d0c]/85 backdrop-blur-md py-4 border-white/10 shadow-lg'
+            : 'bg-transparent py-7 md:py-8 border-transparent'
         }`}
       >
         <div className="w-full max-w-[1580px] mx-auto px-6 md:px-12 lg:px-16 flex items-center justify-between">
