@@ -26,7 +26,7 @@ export const AboutCraftSection: React.FC<AboutCraftSectionProps> = ({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="w-32 sm:w-40 md:w-44 lg:w-48 xl:w-52 flex-shrink-0 overflow-hidden bg-neutral-200"
+                className="w-full sm:w-40 md:w-44 lg:w-48 xl:w-52 flex-shrink-0 overflow-hidden bg-neutral-200"
               >
                 <img
                   src={smallImageSrc}
