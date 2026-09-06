@@ -52,9 +52,9 @@ export const ServicesShowcaseSection: React.FC<ServicesShowcaseSectionProps> = (
         {/* Header: 'Services' on left, French title on right */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-start mb-20 md:mb-28">
           <div className="md:col-span-4 lg:col-span-4">
-            <h3 className="text-3xl sm:text-4xl md:text-[44px] font-semibold text-neutral-900 tracking-tight leading-none">
+            <span className="text-3xl sm:text-4xl md:text-[44px] font-semibold text-neutral-900 tracking-tight leading-none block">
               Services
-            </h3>
+            </span>
           </div>
           <div className="md:col-span-8 lg:col-span-8">
             <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-[76px] font-bold tracking-tight text-neutral-900 leading-[1.06]">

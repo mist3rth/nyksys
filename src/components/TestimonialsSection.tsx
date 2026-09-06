@@ -59,9 +59,9 @@ export const TestimonialsSection: React.FC = () => {
                   loading="lazy"
                 />
               </div>
-              <h4 className="text-xl sm:text-2xl font-bold text-neutral-900 tracking-tight">
+              <p className="text-xl sm:text-2xl font-bold text-neutral-900 tracking-tight">
                 Sophia Bennett
-              </h4>
+              </p>
               <p className="text-sm sm:text-base text-neutral-600 font-medium mt-1">
                 Propriétaire
               </p>

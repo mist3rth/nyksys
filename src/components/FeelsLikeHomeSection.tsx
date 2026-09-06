@@ -21,9 +21,9 @@ export const FeelsLikeHomeSection: React.FC<FeelsLikeHomeSectionProps> = ({
           <div className="flex flex-col justify-between relative min-h-[480px] lg:min-h-full">
             {/* Top Heading */}
             <div className="pt-2">
-              <h3 className="text-3xl sm:text-4xl md:text-[44px] font-semibold text-neutral-900 tracking-tight leading-none">
+              <h2 className="text-3xl sm:text-4xl md:text-[44px] font-semibold text-neutral-900 tracking-tight leading-none">
                 Comme chez soi
-              </h3>
+              </h2>
             </div>
 
             {/* Bottom-Left Image Container */}

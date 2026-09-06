@@ -27,9 +27,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact, onNavigate }) => 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-8 pb-20 sm:pb-28 md:pb-36 items-start">
           {/* Column 1: Contact Address */}
           <div className="lg:col-span-3">
-            <h4 className="text-xl sm:text-2xl font-bold tracking-tight text-neutral-900 mb-6">
+            <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-neutral-900 mb-6">
               Contact
-            </h4>
+            </h3>
             <address className="not-italic text-xl sm:text-2xl font-bold tracking-tight text-neutral-900 leading-snug space-y-1">
               <p>Place Vendôme,</p>
               <p>75001 Paris,</p>
@@ -39,9 +39,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact, onNavigate }) => 
 
           {/* Column 2: Navigation Links */}
           <div className="lg:col-span-3">
-            <h4 className="text-xl sm:text-2xl font-bold tracking-tight text-neutral-900 mb-6">
+            <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-neutral-900 mb-6">
               Nav
-            </h4>
+            </h3>
             <ul className="space-y-2 text-xl sm:text-2xl font-bold tracking-tight text-neutral-900">
               <li>
                 <button
@@ -84,9 +84,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact, onNavigate }) => 
 
           {/* Column 3: Social Networks */}
           <div className="lg:col-span-3">
-            <h4 className="text-xl sm:text-2xl font-bold tracking-tight text-neutral-900 mb-6">
+            <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-neutral-900 mb-6">
               Réseaux
-            </h4>
+            </h3>
             <ul className="space-y-2 text-xl sm:text-2xl font-bold tracking-tight text-neutral-900">
               <li>
                 <a
@@ -126,9 +126,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact, onNavigate }) => 
 
           {/* Column 4: Newsletter Subscription */}
           <div className="lg:col-span-3">
-            <h4 className="text-xl sm:text-2xl font-bold tracking-tight text-neutral-900 mb-6 sm:mb-8">
+            <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-neutral-900 mb-6 sm:mb-8">
               S’inscrire à notre newsletter
-            </h4>
+            </h3>
 
             {isSubscribed ? (
               <div className="flex items-center gap-2 py-3 text-neutral-900 font-medium text-base border-b border-neutral-900">
@@ -196,7 +196,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact, onNavigate }) => 
               href="https://present-me-lake.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Portfolio du créateur T.THIESSON (s'ouvre dans un nouvel onglet)"
+              aria-label="Made by T.THIESSON — Portfolio du créateur (s'ouvre dans un nouvel onglet)"
               className="hover:opacity-60 transition-opacity inline-flex items-center gap-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 rounded-sm"
             >
               Made by T.THIESSON

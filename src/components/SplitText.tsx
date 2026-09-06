@@ -100,6 +100,7 @@ const SplitText: React.FC<SplitTextProps> = ({
         wordsClass: 'split-word',
         charsClass: 'split-char',
         reduceWhiteSpace: false,
+        aria: 'none',
         onSplit: (self: GSAPSplitText) => {
           assignTargets(self);
           return gsap.fromTo(
@@ -127,6 +128,10 @@ const SplitText: React.FC<SplitTextProps> = ({
           );
         }
       });
+      // Ensure no prohibited aria-label is left on blockquote or paragraph tags
+      if (el.hasAttribute('aria-label')) {
+        el.removeAttribute('aria-label');
+      }
       el._rbsplitInstance = splitInstance;
       return () => {
         ScrollTrigger.getAll().forEach(st => {

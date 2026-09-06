@@ -14,9 +14,9 @@ export const AboutIntroSection: React.FC<AboutIntroSectionProps> = ({ id = 'abou
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
         {/* Left Column: À propos Heading with matching typography */}
         <div className="lg:col-span-3 xl:col-span-3">
-          <h3 className="text-3xl sm:text-4xl md:text-[44px] font-semibold text-neutral-900 tracking-tight leading-none">
+          <h2 className="text-3xl sm:text-4xl md:text-[44px] font-semibold text-neutral-900 tracking-tight leading-none">
             À propos
-          </h3>
+          </h2>
         </div>
 
         {/* Right Column: Editorial Statement with animated SplitText */}
@@ -33,7 +33,7 @@ export const AboutIntroSection: React.FC<AboutIntroSectionProps> = ({ id = 'abou
             threshold={0.1}
             rootMargin="-60px"
             textAlign="left"
-            tag="h2"
+            tag="p"
           />
         </div>
       </div>

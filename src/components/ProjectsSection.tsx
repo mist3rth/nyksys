@@ -140,7 +140,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
       {/* 4 Image Blocks Grid (2x2) matching the reference */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 lg:gap-x-12 gap-y-16 lg:gap-y-20">
         {FOUR_FEATURED_PROJECTS.map((project) => (
-          <article
+          <div
             key={project.id}
             id={`project-card-${project.id}`}
             role="button"
@@ -187,13 +187,13 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                 </h3>
               </div>
 
-              <div className="pt-1.5 flex-shrink-0">
+            <div className="pt-1.5 flex-shrink-0">
                 <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.16em] text-neutral-900 group-hover:text-neutral-500 transition-colors whitespace-nowrap inline-block">
                   VOIR LE PROJET
                 </span>
               </div>
             </div>
-          </article>
+          </div>
         ))}
       </div>
 
@@ -271,18 +271,18 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
             {/* Text description */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
               <div className="md:col-span-2">
-                <h4 className="text-sm uppercase tracking-wider font-bold text-neutral-800 mb-2">
+                <h3 className="text-sm uppercase tracking-wider font-bold text-neutral-800 mb-2">
                   Récit Architectural
-                </h4>
+                </h3>
                 <p className="text-neutral-700 text-base leading-relaxed">
                   {activeProjectModal.description}
                 </p>
               </div>
 
               <div>
-                <h4 className="text-sm uppercase tracking-wider font-bold text-neutral-800 mb-2">
+                <h3 className="text-sm uppercase tracking-wider font-bold text-neutral-800 mb-2">
                   Palette de Matières
-                </h4>
+                </h3>
                 <ul className="space-y-1.5">
                   {activeProjectModal.materials.map((mat, i) => (
                     <li key={i} className="text-sm text-neutral-600 flex items-center space-x-2">
@@ -296,9 +296,9 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
 
             {/* Gallery Thumbnails */}
             <div>
-              <h4 className="text-sm uppercase tracking-wider font-bold text-neutral-800 mb-3">
+              <h3 className="text-sm uppercase tracking-wider font-bold text-neutral-800 mb-3">
                 Perspectives du Projet
-              </h4>
+              </h3>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {activeProjectModal.galleryImages.map((img, i) => (
                   <div key={i} className="aspect-[4/3] rounded-xl overflow-hidden shadow-sm bg-neutral-200">
