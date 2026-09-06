@@ -78,7 +78,7 @@ export const AboutStatsSection: React.FC = () => {
         <div className="pb-20 sm:pb-28 md:pb-36 border-b border-neutral-300/80">
           <SplitText
             text="Chez Nyksys, nous croyons que l’architecture d’intérieur va bien au-delà de l’agencement des espaces, c’est l’art de façonner la façon dont la vie y est vécue. Notre travail s’enracine dans la précision, l’équilibre et une élégance intemporelle, créant des intérieurs pensés avec intention et naturellement raffinés."
-            className="text-2xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[62px] font-bold text-neutral-900 tracking-tight leading-[1.12] max-w-[1400px]"
+            className="text-2xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[62px] font-bold text-neutral-900 tracking-tight leading-[1.12] max-w-[1400px] pb-2 md:pb-4"
             delay={40}
             duration={1.2}
             ease="power3.out"

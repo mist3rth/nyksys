@@ -37,7 +37,7 @@ export const TestimonialsSection: React.FC = () => {
           <div className="lg:col-span-6 flex flex-col justify-between">
             <SplitText
               text="“Nyksys a complètement transformé la façon dont nous vivons notre maison. Chaque détail a été pensé avec soin, et le résultat final est élégant, chaleureux et profondément personnel.”"
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-[44px] font-bold text-neutral-900 tracking-tight leading-[1.12] mb-12 sm:mb-16"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-[44px] font-bold text-neutral-900 tracking-tight leading-[1.12] mb-12 sm:mb-16 pb-2 md:pb-4"
               delay={40}
               duration={1.2}
               ease="power3.out"

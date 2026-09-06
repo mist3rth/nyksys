@@ -23,7 +23,7 @@ export const AboutIntroSection: React.FC<AboutIntroSectionProps> = ({ id = 'abou
         <div className="lg:col-span-9 xl:col-span-9">
           <SplitText
             text="Nyksys transforme les intérieurs en espaces soigneusement composés, reflets de style, d’équilibre et de singularité. Notre approche associe un design d’exception à des détails attentifs pour concevoir des résidences à l’élégance naturelle."
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[62px] 2xl:text-[68px] font-bold text-neutral-900 tracking-tight leading-[1.08]"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[62px] 2xl:text-[68px] font-bold text-neutral-900 tracking-tight leading-[1.08] pb-2 md:pb-4"
             delay={45}
             duration={1.2}
             ease="power3.out"
