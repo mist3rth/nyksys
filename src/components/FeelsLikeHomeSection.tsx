@@ -28,7 +28,7 @@ export const FeelsLikeHomeSection: React.FC<FeelsLikeHomeSectionProps> = ({
 
             {/* Bottom-Left Image Container */}
             <div className="mt-8 lg:mt-auto pt-6">
-              <div className="w-full max-w-[260px] sm:max-w-[300px] md:max-w-[320px] aspect-[3/4] rounded-none overflow-hidden bg-[#eeece6] border border-neutral-300 relative group shadow-sm">
+              <div className="w-full lg:max-w-[320px] aspect-[3/4] rounded-none overflow-hidden bg-[#eeece6] border border-neutral-300 relative group shadow-sm">
                 {smallImage ? (
                   <img
                     src={smallImage}
