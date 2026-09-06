@@ -118,7 +118,7 @@ export const ServicesStackSection: React.FC = () => {
                     </div>
 
                     <div className="mt-8 sm:mt-12 lg:mt-auto pt-4">
-                      <p className="text-lg sm:text-xl font-medium text-neutral-800 leading-relaxed max-w-md">
+                      <p className="text-[16px] leading-[17px] sm:text-xl sm:leading-relaxed font-medium text-neutral-800 max-w-md">
                         {service.description}
                       </p>
                     </div>
