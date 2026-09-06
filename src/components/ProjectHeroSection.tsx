@@ -26,7 +26,7 @@ export const ProjectHeroSection: React.FC<ProjectHeroSectionProps> = ({
   return (
     <section
       id="project-hero"
-      className="sticky top-0 left-0 w-full h-screen min-h-[660px] md:min-h-[720px] overflow-hidden bg-[#0d0c0b] z-0 select-none"
+      className="sticky top-0 left-0 w-full h-[100dvh] min-h-[500px] sm:min-h-[660px] md:min-h-[720px] overflow-hidden bg-[#0d0c0b] z-0 select-none"
     >
       {/* Background Image Container with Scroll De-Zoom */}
       <motion.div
@@ -50,7 +50,7 @@ export const ProjectHeroSection: React.FC<ProjectHeroSectionProps> = ({
 
       {/* Hero Bottom-Left Title (matching reference image) */}
       <motion.div
-        className="absolute bottom-12 sm:bottom-16 md:bottom-20 left-0 w-full px-6 md:px-12 lg:px-16 pointer-events-none z-10"
+        className="absolute top-28 sm:top-32 lg:top-auto lg:bottom-16 md:bottom-20 left-0 w-full px-6 md:px-12 lg:px-16 pointer-events-none z-10"
         style={{ y: textY, opacity: textOpacity }}
       >
         <div className="max-w-[1580px] mx-auto">

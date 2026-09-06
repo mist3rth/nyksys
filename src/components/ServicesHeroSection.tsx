@@ -21,7 +21,7 @@ export const ServicesHeroSection: React.FC<ServicesHeroSectionProps> = ({
   return (
     <section
       id="services-hero"
-      className="sticky top-0 left-0 w-full h-screen min-h-[660px] md:min-h-[720px] overflow-hidden bg-[#0d0c0b] z-0 select-none"
+      className="sticky top-0 left-0 w-full h-[100dvh] min-h-[500px] sm:min-h-[660px] md:min-h-[720px] overflow-hidden bg-[#0d0c0b] z-0 select-none"
     >
       {/* Background Image Container with Scroll De-Zoom */}
       <motion.div
@@ -46,10 +46,10 @@ export const ServicesHeroSection: React.FC<ServicesHeroSectionProps> = ({
 
       {/* Hero Content Layer */}
       <motion.div
-        className="relative z-10 w-full h-full flex flex-col justify-end max-w-[1580px] mx-auto px-6 md:px-12 lg:px-16 pb-12 sm:pb-16 md:pb-20 pointer-events-none"
+        className="relative z-10 w-full h-full flex flex-col justify-between lg:justify-end max-w-[1580px] mx-auto px-6 md:px-12 lg:px-16 pt-28 sm:pt-32 lg:pt-0 pb-24 sm:pb-16 md:pb-20 pointer-events-none"
         style={{ y: textY, opacity: textOpacity }}
       >
-        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end">
+        <div className="w-full h-full lg:h-auto flex flex-col justify-between lg:grid lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 lg:items-end">
           {/* Left Title: Savoir-Faire & Qualité */}
           <div className="lg:col-span-8 pointer-events-auto">
             <h1
