@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 
 interface NavbarProps {
   onOpenContact: () => void;
@@ -159,15 +160,20 @@ export const Navbar: React.FC<NavbarProps> = ({
       </header>
 
       {/* Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div
-          id="mobile-nav-drawer"
-          data-lenis-prevent
-          role="dialog"
-          aria-modal="true"
-          aria-label="Menu de navigation mobile"
-          className="fixed inset-0 z-40 bg-[#0e0d0c]/95 backdrop-blur-xl flex flex-col justify-center px-8 md:hidden transition-opacity duration-300"
-        >
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            id="mobile-nav-drawer"
+            data-lenis-prevent
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menu de navigation mobile"
+            className="fixed inset-0 z-40 bg-[#0e0d0c]/95 backdrop-blur-xl flex flex-col justify-center px-8 md:hidden"
+          >
           <div className="flex flex-col space-y-7 text-center">
             <button
               onClick={() => handleLinkClick('/projects')}
@@ -207,8 +213,9 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="absolute bottom-10 left-0 right-0 text-center text-xs text-neutral-400">
             Nyksys® Studio d'Architecture d'Intérieur
           </div>
-        </div>
+        </motion.div>
       )}
+      </AnimatePresence>
     </>
   );
 };
