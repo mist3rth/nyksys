@@ -22,7 +22,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ heroImage }) => {
   return (
     <section
       id="hero-section"
-      className="sticky top-0 left-0 w-full h-screen min-h-[660px] md:min-h-[720px] overflow-hidden bg-[#0d0c0b] z-0 select-none"
+      className="sticky top-0 left-0 w-full h-[100dvh] min-h-[500px] sm:min-h-[660px] md:min-h-[720px] overflow-hidden bg-[#0d0c0b] z-0 select-none"
     >
       {/* Parallax Background Image Container */}
       <motion.div
@@ -50,7 +50,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ heroImage }) => {
 
       {/* Main Hero Content Layer - Widened container and title positioned higher up */}
       <motion.div
-        className="relative z-10 w-full h-full flex flex-col justify-between max-w-[1580px] mx-auto px-6 md:px-12 lg:px-16 pt-24 sm:pt-28 md:pt-32 pb-8 sm:pb-10 md:pb-12 pointer-events-none"
+        className="relative z-10 w-full h-full flex flex-col justify-between max-w-[1580px] mx-auto px-6 md:px-12 lg:px-16 pt-24 sm:pt-28 md:pt-32 pb-24 sm:pb-10 md:pb-12 pointer-events-none"
         style={{ y: textY, opacity: textOpacity }}
       >
         {/* Top Headline - Lifted closer to top header with generous wide expanse */}
@@ -104,7 +104,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ heroImage }) => {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 0.8, y: 0 }}
         transition={{ duration: 0.8, delay: 0.85 }}
-        className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 pointer-events-none flex flex-col items-center hover:opacity-100 transition-opacity"
+        className="absolute bottom-6 sm:bottom-3 left-1/2 -translate-x-1/2 z-20 pointer-events-none flex flex-col items-center hover:opacity-100 transition-opacity"
       >
         <ChevronDown size={18} className="text-white animate-bounce" />
       </motion.div>
