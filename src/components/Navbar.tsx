@@ -69,7 +69,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Logo */}
           <button
             id="nav-logo-btn"
-            onClick={onNavigateHome}
+            onClick={() => {
+              setMobileMenuOpen(false);
+              onNavigateHome();
+            }}
             aria-label="Nyksys Studio — Retour à l'accueil"
             className="text-left group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0e0d0c] rounded-sm"
           >
