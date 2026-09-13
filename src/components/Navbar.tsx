@@ -67,19 +67,21 @@ export const Navbar: React.FC<NavbarProps> = ({
       >
         <div className="w-full max-w-[1580px] mx-auto px-6 md:px-12 lg:px-16 flex items-center justify-between">
           {/* Logo */}
-          <button
+          <a
+            href="/"
             id="nav-logo-btn"
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               setMobileMenuOpen(false);
               onNavigateHome();
             }}
             aria-label="Nyksys Studio — Retour à l'accueil"
-            className="text-left group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0e0d0c] rounded-sm"
+            className="text-left group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0e0d0c] rounded-sm inline-block"
           >
             <span className="text-2xl md:text-[28px] font-bold tracking-tight text-white transition-opacity duration-300 group-hover:opacity-85">
               Nyksys<sup className="text-xs md:text-sm font-medium ml-0.5">®</sup>
             </span>
-          </button>
+          </a>
 
           {/* Desktop Nav Links */}
           <nav
@@ -88,66 +90,84 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="hidden md:flex items-center space-x-10 lg:space-x-14"
           >
             <div className="flex items-center space-x-8 lg:space-x-12">
-              <button
+              <a
+                href="/projects"
                 id="nav-link-projects"
-                onClick={() => handleLinkClick('/projects')}
-                className={`text-[15px] font-semibold tracking-wide transition-all duration-200 cursor-pointer hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0e0d0c] rounded-sm ${
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleLinkClick('/projects');
+                }}
+                className={`text-[15px] font-semibold tracking-wide transition-all duration-200 cursor-pointer hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0e0d0c] rounded-sm inline-block ${
                   isProjectsActive
                     ? 'text-white border-b-2 border-white pb-0.5'
                     : 'text-white/90 hover:text-white'
                 }`}
               >
                 Projets
-              </button>
-              <button
+              </a>
+              <a
+                href="/about"
                 id="nav-link-about"
-                onClick={() => handleLinkClick('/about')}
-                className={`text-[15px] font-semibold tracking-wide transition-all duration-200 cursor-pointer hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0e0d0c] rounded-sm ${
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleLinkClick('/about');
+                }}
+                className={`text-[15px] font-semibold tracking-wide transition-all duration-200 cursor-pointer hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0e0d0c] rounded-sm inline-block ${
                   isAboutActive
                     ? 'text-white border-b-2 border-white pb-0.5'
                     : 'text-white/90 hover:text-white'
                 }`}
               >
                 À propos
-              </button>
-              <button
+              </a>
+              <a
+                href="/services"
                 id="nav-link-services"
-                onClick={() => handleLinkClick('services')}
-                className={`text-[15px] font-semibold tracking-wide transition-all duration-200 cursor-pointer hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0e0d0c] rounded-sm ${
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleLinkClick('services');
+                }}
+                className={`text-[15px] font-semibold tracking-wide transition-all duration-200 cursor-pointer hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0e0d0c] rounded-sm inline-block ${
                   isServicesActive
                     ? 'text-white border-b-2 border-white pb-0.5'
                     : 'text-white/90 hover:text-white'
                 }`}
               >
                 Services
-              </button>
+              </a>
             </div>
 
-            <button
+            <a
+              href="/contact"
               id="nav-link-contact"
-              onClick={onOpenContact}
-              className={`text-[15px] font-semibold tracking-wide transition-all duration-200 cursor-pointer hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0e0d0c] rounded-sm ml-4 ${
+              onClick={(e) => {
+                e.preventDefault();
+                onOpenContact();
+              }}
+              className={`text-[15px] font-semibold tracking-wide transition-all duration-200 cursor-pointer hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0e0d0c] rounded-sm inline-block ml-4 ${
                 isContactActive
                   ? 'text-amber-200 border-b-2 border-amber-200 pb-0.5'
                   : 'text-white hover:text-white/80'
               }`}
             >
               Contact
-            </button>
+            </a>
           </nav>
 
           {/* Mobile Menu Button */}
           <div className="flex md:hidden items-center space-x-3">
-            <button
+            <a
+              href="/contact"
               id="mobile-contact-quick-btn"
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 onOpenContact();
                 setMobileMenuOpen(false);
               }}
-              className="px-3.5 py-1.5 rounded-full text-xs font-semibold text-white bg-white/15 backdrop-blur-sm border border-white/20 hover:bg-white/25 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
+              className="px-3.5 py-1.5 rounded-full text-xs font-semibold text-white bg-white/15 backdrop-blur-sm border border-white/20 hover:bg-white/25 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 inline-block"
             >
               Contact
-            </button>
+            </a>
             <button
               id="mobile-nav-toggle-btn"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -178,39 +198,53 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="fixed inset-0 z-40 bg-[#0e0d0c]/95 backdrop-blur-xl flex flex-col justify-center px-8 md:hidden"
           >
           <div className="flex flex-col space-y-7 text-center">
-            <button
-              onClick={() => handleLinkClick('/projects')}
-              className={`text-3xl font-bold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded-lg py-1 ${
+            <a
+              href="/projects"
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick('/projects');
+              }}
+              className={`text-3xl font-bold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded-lg py-1 inline-block ${
                 isProjectsActive ? 'text-amber-200' : 'text-white hover:text-neutral-400'
               }`}
             >
               Projets
-            </button>
-            <button
-              onClick={() => handleLinkClick('/about')}
-              className={`text-3xl font-bold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded-lg py-1 ${
+            </a>
+            <a
+              href="/about"
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick('/about');
+              }}
+              className={`text-3xl font-bold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded-lg py-1 inline-block ${
                 isAboutActive ? 'text-amber-200' : 'text-white hover:text-neutral-400'
               }`}
             >
               À propos
-            </button>
-            <button
-              onClick={() => handleLinkClick('services')}
-              className="text-3xl font-bold text-white hover:text-neutral-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded-lg py-1"
+            </a>
+            <a
+              href="/services"
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick('services');
+              }}
+              className="text-3xl font-bold text-white hover:text-neutral-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded-lg py-1 inline-block"
             >
               Services
-            </button>
-            <button
-              onClick={() => {
+            </a>
+            <a
+              href="/contact"
+              onClick={(e) => {
+                e.preventDefault();
                 setMobileMenuOpen(false);
                 onOpenContact();
               }}
-              className={`text-3xl font-bold transition-colors pt-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded-lg py-1 ${
+              className={`text-3xl font-bold transition-colors pt-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded-lg py-1 inline-block ${
                 isContactActive ? 'text-amber-200' : 'text-white hover:text-amber-200'
               }`}
             >
               Contact
-            </button>
+            </a>
           </div>
 
           <div className="absolute bottom-10 left-0 right-0 text-center text-xs text-neutral-400">

@@ -69,7 +69,14 @@ export const FaqSection: React.FC = () => {
               const isOpen = openIndex === index;
 
               return (
-                <div key={item.id} className="py-7 sm:py-9">
+                <motion.div 
+                  key={item.id} 
+                  className="py-7 sm:py-9"
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-10px" }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                >
                   <button
                     type="button"
                     onClick={() => toggleFaq(index)}
@@ -99,7 +106,7 @@ export const FaqSection: React.FC = () => {
                       </motion.div>
                     )}
                   </AnimatePresence>
-                </div>
+                </motion.div>
               );
             })}
           </div>

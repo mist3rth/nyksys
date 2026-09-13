@@ -44,40 +44,52 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact, onNavigate }) => 
             </h3>
             <ul className="space-y-2 text-xl sm:text-2xl font-bold tracking-tight text-neutral-900">
               <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate('/projects')}
-                  className="hover:opacity-60 transition-opacity cursor-pointer text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 rounded-sm"
+                <a
+                  href="/projects"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/projects');
+                  }}
+                  className="hover:opacity-60 transition-opacity cursor-pointer text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 rounded-sm inline-block"
                 >
                   Projets
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate('/about')}
-                  className="hover:opacity-60 transition-opacity cursor-pointer text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 rounded-sm"
+                <a
+                  href="/about"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/about');
+                  }}
+                  className="hover:opacity-60 transition-opacity cursor-pointer text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 rounded-sm inline-block"
                 >
                   À Propos
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate('/services')}
-                  className="hover:opacity-60 transition-opacity cursor-pointer text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 rounded-sm"
+                <a
+                  href="/services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/services');
+                  }}
+                  className="hover:opacity-60 transition-opacity cursor-pointer text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 rounded-sm inline-block"
                 >
                   Services
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={onOpenContact}
-                  className="hover:opacity-60 transition-opacity cursor-pointer text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 rounded-sm"
+                <a
+                  href="/contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onOpenContact();
+                  }}
+                  className="hover:opacity-60 transition-opacity cursor-pointer text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 rounded-sm inline-block"
                 >
                   Contact
-                </button>
+                </a>
               </li>
             </ul>
           </div>
