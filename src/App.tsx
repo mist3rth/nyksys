@@ -156,12 +156,18 @@ export default function App({ initialPath }: AppProps = {}) {
   }, [currentPath, activeProject]);
 
   const scrollToPageTop = (immediate = true) => {
-    if (lenisRef.current) {
-      lenisRef.current.scrollTo(0, { immediate });
-    } else if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined') {
       window.scrollTo({ top: 0, behavior: immediate ? 'instant' : 'smooth' });
     }
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(0, { immediate });
+    }
   };
+
+  // Scroll to top unconditionally whenever currentPath changes
+  useEffect(() => {
+    scrollToPageTop(true);
+  }, [currentPath]);
 
   const scrollToAnchor = (targetId: string) => {
     if (typeof document === 'undefined') return;
@@ -364,6 +370,7 @@ export default function App({ initialPath }: AppProps = {}) {
             <FeelsLikeHomeSection
               smallImage="/cheznous2.webp"
               largeImage="/cheznous.webp"
+              onNavigateToAbout={() => navigateTo('/a-propos')}
             />
 
             {/* Full-width image with scroll de-zoom and sticky pin (1) */}

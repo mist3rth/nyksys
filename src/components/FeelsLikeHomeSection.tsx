@@ -4,11 +4,13 @@ import { Image as ImageIcon } from 'lucide-react';
 interface FeelsLikeHomeSectionProps {
   smallImage?: string;
   largeImage?: string;
+  onNavigateToAbout?: () => void;
 }
 
 export const FeelsLikeHomeSection: React.FC<FeelsLikeHomeSectionProps> = ({
   smallImage = '/cheznous2.webp',
   largeImage = '/cheznous.webp',
+  onNavigateToAbout,
 }) => {
   return (
     <section
@@ -84,12 +86,19 @@ export const FeelsLikeHomeSection: React.FC<FeelsLikeHomeSectionProps> = ({
           </div>
         </div>
 
-        {/* Centered Link: Découvrir */}
+        {/* Centered Link: Découvrir -> Page À Propos */}
         <div className="mt-14 sm:mt-20 text-center flex justify-center">
           <a
             id="link-decouvrir-about"
-            href="#about"
-            className="inline-block text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-bold text-neutral-900 hover:text-neutral-600 transition-colors duration-300 tracking-tight"
+            href="/a-propos"
+            onClick={(e) => {
+              if (onNavigateToAbout) {
+                e.preventDefault();
+                onNavigateToAbout();
+              }
+            }}
+            aria-label="Découvrir l'histoire et le studio Nyksys (page À Propos)"
+            className="inline-block text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-bold text-neutral-900 hover:text-neutral-600 transition-colors duration-300 tracking-tight cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-4 rounded-sm"
           >
             Découvrir
           </a>
