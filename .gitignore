@@ -6,3 +6,6 @@ coverage/
 *.log
 .env*
 !.env.example
+nyksys.vercel.app-*.json
+scratch_*.json
+
