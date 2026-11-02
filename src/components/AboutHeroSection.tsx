@@ -21,7 +21,7 @@ export const AboutHeroSection: React.FC<AboutHeroSectionProps> = ({
   return (
     <section
       id="about-hero"
-      className="sticky top-0 left-0 w-full h-[100dvh] min-h-[500px] sm:min-h-[660px] md:min-h-[720px] overflow-hidden bg-[#0d0c0b] z-0 select-none"
+      className="sticky top-0 left-0 w-full h-[100dvh] min-h-[460px] overflow-hidden bg-[#0d0c0b] z-0 select-none"
     >
       {/* Background Image Container with Scroll De-Zoom */}
       <motion.div
@@ -46,7 +46,7 @@ export const AboutHeroSection: React.FC<AboutHeroSectionProps> = ({
 
       {/* Hero Content Layer */}
       <motion.div
-        className="relative z-10 w-full h-full flex flex-col justify-between lg:justify-end max-w-[1580px] mx-auto px-6 md:px-12 lg:px-16 pt-28 sm:pt-32 lg:pt-0 pb-24 sm:pb-16 md:pb-20 pointer-events-none"
+        className="hero-container-responsive relative z-10 w-full h-full flex flex-col justify-between lg:justify-end max-w-[1580px] mx-auto px-6 md:px-12 lg:px-16 pt-24 sm:pt-28 lg:pt-0 pb-20 sm:pb-12 md:pb-14 pointer-events-none"
         style={{ y: textY, opacity: textOpacity }}
       >
         <div className="w-full h-full lg:h-auto flex flex-col justify-between lg:grid lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 lg:items-end">
@@ -54,7 +54,7 @@ export const AboutHeroSection: React.FC<AboutHeroSectionProps> = ({
           <div className="lg:col-span-8 pointer-events-auto">
             <h1
               id="about-hero-title"
-              className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] font-bold text-white tracking-tight leading-[0.94] drop-shadow-md select-text"
+              className="hero-title-responsive text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] font-bold text-white tracking-tight leading-[0.94] drop-shadow-md select-text"
             >
               <span className="block overflow-hidden py-1">
                 <motion.span
@@ -88,7 +88,7 @@ export const AboutHeroSection: React.FC<AboutHeroSectionProps> = ({
           >
             <p
               id="about-hero-desc"
-              className="text-base sm:text-lg md:text-xl font-medium text-white/95 leading-snug drop-shadow-sm select-text"
+              className="hero-statement-responsive text-base sm:text-lg md:text-xl font-medium text-white/95 leading-snug drop-shadow-sm select-text"
             >
               L'art d'habiter réinventé par l'harmonie des volumes, la noblesse des textures et une quête intemporelle d'authenticité.
             </p>
@@ -97,7 +97,7 @@ export const AboutHeroSection: React.FC<AboutHeroSectionProps> = ({
       </motion.div>
 
       {/* Floating Scroll Indicator */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 pointer-events-none flex flex-col items-center opacity-75">
+      <div className="hero-chevron-responsive absolute bottom-4 left-1/2 -translate-x-1/2 z-20 pointer-events-none flex flex-col items-center opacity-75">
         <ChevronDown size={18} className="text-white animate-bounce" />
       </div>
     </section>
