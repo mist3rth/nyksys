@@ -209,7 +209,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({
             <article
               id={`next-project-${nextProject.slug}`}
               onClick={() => {
-                onNavigate(`/projects/${nextProject.slug}`);
+                onNavigate(`/projets/${nextProject.slug}`);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
               className="group cursor-pointer flex flex-col"

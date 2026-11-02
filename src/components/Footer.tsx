@@ -45,10 +45,10 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact, onNavigate }) => 
             <ul className="space-y-2 text-xl sm:text-2xl font-bold tracking-tight text-neutral-900">
               <li>
                 <a
-                  href="/projects"
+                  href="/projets"
                   onClick={(e) => {
                     e.preventDefault();
-                    onNavigate('/projects');
+                    onNavigate('/projets');
                   }}
                   className="hover:opacity-60 transition-opacity cursor-pointer text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 rounded-sm inline-block"
                 >
@@ -57,10 +57,10 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact, onNavigate }) => 
               </li>
               <li>
                 <a
-                  href="/about"
+                  href="/a-propos"
                   onClick={(e) => {
                     e.preventDefault();
-                    onNavigate('/about');
+                    onNavigate('/a-propos');
                   }}
                   className="hover:opacity-60 transition-opacity cursor-pointer text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 rounded-sm inline-block"
                 >

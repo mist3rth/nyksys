@@ -116,7 +116,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
 
   const handleCardClick = (project: FeaturedProjectBlock) => {
     if (onNavigate) {
-      onNavigate(`/projects/${project.id}`);
+      onNavigate(`/projets/${project.id}`);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       setActiveProjectModal(project);

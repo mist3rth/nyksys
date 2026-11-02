@@ -28,7 +28,20 @@ Pour obtenir la note **A / A+** sur [securityheaders.com](https://securityheader
 - **Referrer-Policy :** `strict-origin-when-cross-origin`
 - **Permissions-Policy :** `camera=(), microphone=(), geolocation=(), payment=(), usb=(), vr=(), interest-cohort=(), browsing-topics=()`
 - **X-XSS-Protection :** `1; mode=block`
+- **cleanUrls :** `true` (résolution directe des fichiers statiques sans extension ni trailing slash).
 
-### 2.2 Stratégie de Rendu (SSG vs CSR)
-- **Actuel :** CSR (SPA) avec script de fallback Puppeteer qui échoue sur conteneurs CI.
-- **Cible :** Véritable Static Site Generation (SSG) sans dépendance navigateur (via `react-dom/server` ou SSG Vite dédié).
+### 2.2 Stratégie de Rendu SSG (Static Site Generation)
+- **Pipeline de build :**
+  1. `vite build` : Génération du bundle client minifié et du template HTML de base.
+  2. `vite build --ssr src/entry-server.tsx --outDir dist/server` : Compilation ultra-rapide (200ms) du composant racine sous forme de module serveur Node.
+  3. `node scripts/prerender.mjs` : Script Node natif sans navigateur headless (zéro Puppeteer) qui exécute `renderToString` pour chaque route publique, injecte le code HTML sémantique et les balises Helmet dans `<div id="root">`, écrit les fichiers statiques (`dist/index.html`, `dist/projets/index.html`, `dist/a-propos/index.html`, etc.) et supprime le dossier temporaire `dist/server`.
+  4. `src/main.tsx` : Utilise `hydrateRoot` si le DOM contient déjà des nœuds pré-rendus, assurant une hydratation instantanée sans scintillement.
+
+### 2.3 Structure des URLs & Localisation SEO
+- `/` : Accueil (Hero, Intro, Immersion, Projets à la une, Services, Témoignages, FAQ, CTA, Footer)
+- `/projets` : Galerie complète des réalisations d'exception
+- `/projets/:slug` : Pages détaillées des résidences (`oakroom-residence`, `ellhmart-penthouse`, `kyoto-sanctuary`, `foundry-loft`)
+- `/a-propos` : Histoire, chiffres clés, savoir-faire et équipe Nyksys
+- `/services` : Savoir-faire, space planning, ébénisterie et architecture
+- `/contact` : Formulaire de contact et coordonnées Place Vendôme
+- *Rétrocompatibilité :* `/about` et `/projects` sont pré-rendues et redirigées pour assurer la continuité des liens externes.

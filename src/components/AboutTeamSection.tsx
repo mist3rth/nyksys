@@ -45,7 +45,7 @@ export const AboutTeamSection: React.FC = () => {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="text-xs sm:text-sm font-bold tracking-[0.2em] text-neutral-900 uppercase mb-4 sm:mb-6"
           >
-            ABOUT US
+            À PROPOS
           </motion.p>
 
           <motion.h2
@@ -56,9 +56,9 @@ export const AboutTeamSection: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-bold text-neutral-900 tracking-tight leading-[1.08]"
           >
-            The Minds
+            Les esprits
             <br />
-            Behind Haven
+            derrière Nyksys
           </motion.h2>
         </div>
 

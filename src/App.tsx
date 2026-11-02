@@ -20,15 +20,41 @@ import { Footer } from './components/Footer';
 import { Seo } from './components/Seo';
 import { useLenis } from './hooks/useLenis';
 
-export default function App() {
+export interface AppProps {
+  initialPath?: string;
+}
+
+function normalizePath(rawPath?: string): string {
+  if (!rawPath) return '/';
+  const clean = rawPath.toLowerCase().replace(/^#/, '');
+  if (clean.startsWith('/projects/')) {
+    return clean.replace('/projects/', '/projets/');
+  }
+  if (clean === '/projects' || clean === 'projects') {
+    return '/projets';
+  }
+  if (clean === '/about' || clean === 'about') {
+    return '/a-propos';
+  }
+  return clean;
+}
+
+export default function App({ initialPath }: AppProps = {}) {
   const lenisRef = useLenis();
   const heroImage = '/hero-home.webp?v=2';
+  
   const [currentPath, setCurrentPath] = useState<string>(() => {
+    if (initialPath) return normalizePath(initialPath);
     if (typeof window !== 'undefined') {
       const pathname = window.location.pathname.toLowerCase();
       const hash = window.location.hash.toLowerCase();
-      if (pathname.startsWith('/projects/') || hash.startsWith('#/projects/')) {
-        return pathname.startsWith('/projects/') ? pathname : hash.replace(/^#/, '');
+      if (
+        pathname.startsWith('/projets/') ||
+        pathname.startsWith('/projects/') ||
+        hash.startsWith('#/projets/') ||
+        hash.startsWith('#/projects/')
+      ) {
+        return normalizePath(pathname.startsWith('/projets/') || pathname.startsWith('/projects/') ? pathname : hash);
       }
       if (pathname === '/contact' || hash === '#contact' || hash === '#/contact') {
         return '/contact';
@@ -36,11 +62,11 @@ export default function App() {
       if (pathname === '/services' || hash === '#services' || hash === '#/services') {
         return '/services';
       }
-      if (pathname === '/about' || hash === '#about' || hash === '#/about') {
-        return '/about';
+      if (pathname === '/a-propos' || pathname === '/about' || hash === '#about' || hash === '#/a-propos' || hash === '#/about') {
+        return '/a-propos';
       }
-      if (pathname === '/projects' || hash === '#projects' || hash === '#/projects') {
-        return '/projects';
+      if (pathname === '/projets' || pathname === '/projects' || hash === '#projects' || hash === '#/projets' || hash === '#/projects') {
+        return '/projets';
       }
     }
     return '/';
@@ -53,16 +79,21 @@ export default function App() {
     const handlePopState = () => {
       const pathname = window.location.pathname.toLowerCase();
       const hash = window.location.hash.toLowerCase();
-      if (pathname.startsWith('/projects/') || hash.startsWith('#/projects/')) {
-        setCurrentPath(pathname.startsWith('/projects/') ? pathname : hash.replace(/^#/, ''));
+      if (
+        pathname.startsWith('/projets/') ||
+        pathname.startsWith('/projects/') ||
+        hash.startsWith('#/projets/') ||
+        hash.startsWith('#/projects/')
+      ) {
+        setCurrentPath(normalizePath(pathname.startsWith('/projets/') || pathname.startsWith('/projects/') ? pathname : hash));
       } else if (pathname === '/contact' || hash === '#contact' || hash === '#/contact') {
         setCurrentPath('/contact');
       } else if (pathname === '/services' || hash === '#services' || hash === '#/services') {
         setCurrentPath('/services');
-      } else if (pathname === '/about' || hash === '#about' || hash === '#/about') {
-        setCurrentPath('/about');
-      } else if (pathname === '/projects' || hash === '#projects' || hash === '#/projects') {
-        setCurrentPath('/projects');
+      } else if (pathname === '/a-propos' || pathname === '/about' || hash === '#about' || hash === '#/a-propos' || hash === '#/about') {
+        setCurrentPath('/a-propos');
+      } else if (pathname === '/projets' || pathname === '/projects' || hash === '#projects' || hash === '#/projets' || hash === '#/projects') {
+        setCurrentPath('/projets');
       } else {
         setCurrentPath('/');
       }
@@ -72,8 +103,8 @@ export default function App() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  const activeProject = currentPath.startsWith('/projects/')
-    ? getProjectBySlug(currentPath.replace('/projects/', '').replace(/^\//, ''))
+  const activeProject = (currentPath.startsWith('/projets/') || currentPath.startsWith('/projects/'))
+    ? getProjectBySlug(currentPath.replace(/^\/(projets|projects)\//, '').replace(/^\//, ''))
     : undefined;
 
   // Compute SEO props for the current route
@@ -82,7 +113,7 @@ export default function App() {
       return {
         title: `${activeProject.fullTitle} — Nyksys | Architecture d'Intérieur`,
         description: `${activeProject.fullTitle} : ${activeProject.infoText.slice(0, 150)}...`,
-        url: `/projects/${activeProject.slug}`,
+        url: `/projets/${activeProject.slug}`,
         image: activeProject.heroImage || activeProject.highlightImage || '/hero-home.webp',
         type: 'article',
       };
@@ -100,18 +131,18 @@ export default function App() {
         url: '/services',
         image: '/services-hero.webp',
       };
-    } else if (currentPath === '/about') {
+    } else if (currentPath === '/a-propos' || currentPath === '/about') {
       return {
         title: "À Propos du Studio — Nyksys | Architecture d'Intérieur",
         description: "Découvrez l'histoire et la philosophie du studio d'architecture d'intérieur Nyksys. Élégance intemporelle, maîtrise des volumes et exigence artisanale.",
-        url: '/about',
+        url: '/a-propos',
         image: '/about-hero.webp',
       };
-    } else if (currentPath === '/projects') {
+    } else if (currentPath === '/projets' || currentPath === '/projects') {
       return {
         title: "Projets & Réalisations — Nyksys | Architecture d'Intérieur",
         description: "Explorez les réalisations et résidences d'exception conçues par le studio Nyksys. Function meets elegance.",
-        url: '/projects',
+        url: '/projets',
         image: '/projects-hero.webp',
       };
     } else {
@@ -127,12 +158,13 @@ export default function App() {
   const scrollToPageTop = (immediate = true) => {
     if (lenisRef.current) {
       lenisRef.current.scrollTo(0, { immediate });
-    } else {
+    } else if (typeof window !== 'undefined') {
       window.scrollTo({ top: 0, behavior: immediate ? 'instant' : 'smooth' });
     }
   };
 
   const scrollToAnchor = (targetId: string) => {
+    if (typeof document === 'undefined') return;
     const el = document.getElementById(targetId);
     if (el) {
       if (lenisRef.current) {
@@ -147,11 +179,18 @@ export default function App() {
 
   const navigateTo = (pathOrSection: string) => {
     // 1. Direct Project Detail Page Navigation
-    if (pathOrSection.startsWith('/projects/') || pathOrSection.startsWith('#/projects/')) {
-      const cleanPath = pathOrSection.replace(/^#/, '');
+    if (
+      pathOrSection.startsWith('/projets/') ||
+      pathOrSection.startsWith('/projects/') ||
+      pathOrSection.startsWith('#/projets/') ||
+      pathOrSection.startsWith('#/projects/')
+    ) {
+      const cleanPath = normalizePath(pathOrSection);
       if (currentPath !== cleanPath) {
         setCurrentPath(cleanPath);
-        window.history.pushState({}, '', cleanPath);
+        if (typeof window !== 'undefined') {
+          window.history.pushState({}, '', cleanPath);
+        }
       }
       scrollToPageTop(true);
       return;
@@ -160,10 +199,12 @@ export default function App() {
     // 2. Project slug alone (e.g., 'oakroom-residence')
     const possibleProject = getProjectBySlug(pathOrSection);
     if (possibleProject) {
-      const projectPath = `/projects/${possibleProject.slug}`;
+      const projectPath = `/projets/${possibleProject.slug}`;
       if (currentPath !== projectPath) {
         setCurrentPath(projectPath);
-        window.history.pushState({}, '', projectPath);
+        if (typeof window !== 'undefined') {
+          window.history.pushState({}, '', projectPath);
+        }
       }
       scrollToPageTop(true);
       return;
@@ -173,7 +214,9 @@ export default function App() {
     if (pathOrSection === 'contact' || pathOrSection === '/contact') {
       if (currentPath !== '/contact') {
         setCurrentPath('/contact');
-        window.history.pushState({}, '', '/contact');
+        if (typeof window !== 'undefined') {
+          window.history.pushState({}, '', '/contact');
+        }
       }
       scrollToPageTop(true);
       return;
@@ -183,27 +226,33 @@ export default function App() {
     if (pathOrSection === 'services' || pathOrSection === '/services') {
       if (currentPath !== '/services') {
         setCurrentPath('/services');
-        window.history.pushState({}, '', '/services');
+        if (typeof window !== 'undefined') {
+          window.history.pushState({}, '', '/services');
+        }
       }
       scrollToPageTop(true);
       return;
     }
 
-    // 5. About page
-    if (pathOrSection === 'about' || pathOrSection === '/about') {
-      if (currentPath !== '/about') {
-        setCurrentPath('/about');
-        window.history.pushState({}, '', '/about');
+    // 5. About page (/a-propos)
+    if (pathOrSection === 'about' || pathOrSection === '/about' || pathOrSection === 'a-propos' || pathOrSection === '/a-propos') {
+      if (currentPath !== '/a-propos') {
+        setCurrentPath('/a-propos');
+        if (typeof window !== 'undefined') {
+          window.history.pushState({}, '', '/a-propos');
+        }
       }
       scrollToPageTop(true);
       return;
     }
 
-    // 6. Projects listing page
-    if (pathOrSection === 'projects' || pathOrSection === '/projects') {
-      if (currentPath !== '/projects') {
-        setCurrentPath('/projects');
-        window.history.pushState({}, '', '/projects');
+    // 6. Projects listing page (/projets)
+    if (pathOrSection === 'projects' || pathOrSection === '/projects' || pathOrSection === 'projets' || pathOrSection === '/projets') {
+      if (currentPath !== '/projets') {
+        setCurrentPath('/projets');
+        if (typeof window !== 'undefined') {
+          window.history.pushState({}, '', '/projets');
+        }
       }
       scrollToPageTop(true);
       return;
@@ -212,7 +261,9 @@ export default function App() {
     // 7. Navigating to home or section on home
     if (currentPath !== '/') {
       setCurrentPath('/');
-      window.history.pushState({}, '', '/');
+      if (typeof window !== 'undefined') {
+        window.history.pushState({}, '', '/');
+      }
       // Wait for DOM to render home sections before scrolling
       setTimeout(() => {
         scrollToAnchor(pathOrSection);
@@ -225,7 +276,9 @@ export default function App() {
   const handleNavigateHome = () => {
     if (currentPath !== '/') {
       setCurrentPath('/');
-      window.history.pushState({}, '', '/');
+      if (typeof window !== 'undefined') {
+        window.history.pushState({}, '', '/');
+      }
       scrollToPageTop(true);
     } else {
       scrollToPageTop(false);
@@ -267,7 +320,7 @@ export default function App() {
             onOpenContact={() => navigateTo('/contact')}
           />
         </main>
-      ) : currentPath === '/about' ? (
+      ) : (currentPath === '/a-propos' || currentPath === '/about') ? (
         /* View 3: Dedicated About Page */
         <main key="about-page" id="main-content" tabIndex={-1} className="outline-none">
           <AboutPage
@@ -284,7 +337,7 @@ export default function App() {
             onOpenContact={() => navigateTo('/contact')}
           />
         </main>
-      ) : currentPath === '/projects' ? (
+      ) : (currentPath === '/projets' || currentPath === '/projects') ? (
         /* View 5: Dedicated Projects Page */
         <main key="projects-page" id="main-content" tabIndex={-1} className="outline-none">
           <ProjectsPage
@@ -324,7 +377,7 @@ export default function App() {
             <div className="relative z-20 bg-[#faf9f6] shadow-[0_-25px_60px_rgba(0,0,0,0.35)] border-t border-neutral-300/60">
               <ProjectsSection
                 onNavigate={navigateTo}
-                onNavigateToProjects={() => navigateTo('/projects')}
+                onNavigateToProjects={() => navigateTo('/projets')}
               />
             </div>
 

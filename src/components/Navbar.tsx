@@ -47,12 +47,14 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   const isProjectsActive =
+    currentPath === '/projets' ||
+    currentPath.startsWith('/projets/') ||
     currentPath === '/projects' ||
     currentPath.startsWith('/projects/') ||
     currentPath === '#projects';
   const isContactActive = currentPath === '/contact' || currentPath === '#contact';
   const isServicesActive = currentPath === '/services' || currentPath === '#services';
-  const isAboutActive = currentPath === '/about' || currentPath === '#about';
+  const isAboutActive = currentPath === '/a-propos' || currentPath === '/about' || currentPath === '#about';
 
   return (
     <>
@@ -91,11 +93,11 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             <div className="flex items-center space-x-8 lg:space-x-12">
               <a
-                href="/projects"
+                href="/projets"
                 id="nav-link-projects"
                 onClick={(e) => {
                   e.preventDefault();
-                  handleLinkClick('/projects');
+                  handleLinkClick('/projets');
                 }}
                 className={`text-[15px] font-semibold tracking-wide transition-all duration-200 cursor-pointer hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0e0d0c] rounded-sm inline-block ${
                   isProjectsActive
@@ -106,11 +108,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 Projets
               </a>
               <a
-                href="/about"
+                href="/a-propos"
                 id="nav-link-about"
                 onClick={(e) => {
                   e.preventDefault();
-                  handleLinkClick('/about');
+                  handleLinkClick('/a-propos');
                 }}
                 className={`text-[15px] font-semibold tracking-wide transition-all duration-200 cursor-pointer hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0e0d0c] rounded-sm inline-block ${
                   isAboutActive
@@ -199,10 +201,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
           <div className="flex flex-col space-y-7 text-center">
             <a
-              href="/projects"
+              href="/projets"
               onClick={(e) => {
                 e.preventDefault();
-                handleLinkClick('/projects');
+                handleLinkClick('/projets');
               }}
               className={`text-3xl font-bold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded-lg py-1 inline-block ${
                 isProjectsActive ? 'text-amber-200' : 'text-white hover:text-neutral-400'
@@ -211,10 +213,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               Projets
             </a>
             <a
-              href="/about"
+              href="/a-propos"
               onClick={(e) => {
                 e.preventDefault();
-                handleLinkClick('/about');
+                handleLinkClick('/a-propos');
               }}
               className={`text-3xl font-bold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded-lg py-1 inline-block ${
                 isAboutActive ? 'text-amber-200' : 'text-white hover:text-neutral-400'
@@ -226,7 +228,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               href="/services"
               onClick={(e) => {
                 e.preventDefault();
-                handleLinkClick('services');
+                handleLinkClick('/services');
               }}
               className="text-3xl font-bold text-white hover:text-neutral-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded-lg py-1 inline-block"
             >
