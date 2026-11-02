@@ -17,10 +17,11 @@
 - [x] Générer `llms.txt` standard (GEO / IA search engines)
 - [x] Router le CTA « Découvrir » de la Home vers la page À propos (`/a-propos`) avec calage immédiat en haut de page (`top: 0`)
 
-## 📱 Ergonomie & Responsive Hauteur (Viewport Height)
+## 📱 Ergonomie, Responsive & Micro-Interactions
 - [x] Supprimer les `min-h-[720px]` rigides qui provoquaient l'écrasement de la phrase inférieure sur fenêtres compactes
 - [x] Implémenter des règles de mise à l'échelle typographique adaptatives en hauteur (`@media (max-height: 820px)`, `700px`, `580px`)
 - [x] Harmoniser tous les heros (`HeroSection`, `AboutHeroSection`, `ProjectsHeroSection`, `ServicesHeroSection`, `ContactHeroSection`, `ProjectHeroSection`) avec padding-top 30px sur les titres H1
+- [x] Animation fluide et soyeuse des accordéons Services (AnimatePresence, easing cubic-bezier `[0.16, 1, 0.3, 1]`, rotation 45° de l'icône SVG et accessibilité clavier)
 
 ## ♿ Accessibilité (A11Y)
 - [x] Navigation au clavier et lien d'évitement (`Skip to main content`)
