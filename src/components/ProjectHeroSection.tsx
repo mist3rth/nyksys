@@ -56,7 +56,7 @@ export const ProjectHeroSection: React.FC<ProjectHeroSectionProps> = ({
         <div className="max-w-[1580px] mx-auto">
           <h1
             id="project-hero-title"
-            className="hero-title-responsive text-5xl sm:text-7xl md:text-8xl lg:text-[100px] xl:text-[112px] font-bold text-white tracking-tight leading-[0.98] drop-shadow-md select-text"
+            className="hero-title-responsive pt-[30px] text-5xl sm:text-7xl md:text-8xl lg:text-[100px] xl:text-[112px] font-bold text-white tracking-tight leading-[0.98] drop-shadow-md select-text"
           >
             <span className="block overflow-hidden py-1">
               <motion.span

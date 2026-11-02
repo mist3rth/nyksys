@@ -33,6 +33,10 @@
    Responsive Viewport Height Utilities (Adaptation des Heros aux écrans compacts)
    ========================================================================== */
 
+.hero-title-responsive {
+  padding-top: 30px;
+}
+
 @media (max-height: 820px) {
   .hero-container-responsive {
     padding-top: max(4.5rem, 8vh) !important;

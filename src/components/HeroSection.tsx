@@ -57,7 +57,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ heroImage }) => {
         <div className="mt-1 sm:mt-3 md:mt-4 max-w-5xl lg:max-w-6xl xl:max-w-7xl pointer-events-auto">
           <h1
             id="hero-headline"
-            className="hero-title-responsive text-[40px] sm:text-6xl md:text-7xl lg:text-[5.4rem] xl:text-[6.2rem] 2xl:text-[6.6rem] font-bold text-white tracking-tight leading-[0.98] drop-shadow-md select-text"
+            className="hero-title-responsive pt-[30px] text-[40px] sm:text-6xl md:text-7xl lg:text-[5.4rem] xl:text-[6.2rem] 2xl:text-[6.6rem] font-bold text-white tracking-tight leading-[0.98] drop-shadow-md select-text"
           >
             <span className="block overflow-hidden py-1">
               <motion.span

@@ -54,7 +54,7 @@ export const ContactHeroSection: React.FC<ContactHeroSectionProps> = ({
           <div className="lg:col-span-7 min-w-0 pointer-events-auto">
             <h1
               id="contact-hero-title"
-              className="hero-title-responsive text-4xl sm:text-6xl md:text-6xl lg:text-6xl xl:text-[5.2rem] 2xl:text-[6rem] font-bold text-white tracking-tight leading-[0.96] drop-shadow-md select-text"
+              className="hero-title-responsive pt-[30px] text-4xl sm:text-6xl md:text-6xl lg:text-6xl xl:text-[5.2rem] 2xl:text-[6rem] font-bold text-white tracking-tight leading-[0.96] drop-shadow-md select-text"
             >
               <span className="block overflow-hidden py-1">
                 <motion.span
