@@ -45,17 +45,31 @@ async function prerender() {
       `<div id="root">${appHtml}</div>`
     );
 
-    if (helmet) {
-      const titleTag = helmet.title?.toString() || '';
-      const metaTags = helmet.meta?.toString() || '';
-      const linkTags = helmet.link?.toString() || '';
+    // Synchronize head metadata (title, description, canonical, OG tags, hero preload)
+    const titleMatch = appHtml.match(/<title[^>]*>([\s\S]*?)<\/title>/);
+    if (titleMatch) {
+      pageHtml = pageHtml.replace(/<title>[\s\S]*?<\/title>/, `<title>${titleMatch[1]}</title>`);
+      pageHtml = pageHtml.replace(/<meta property="og:title" content="[^"]*"/, `<meta property="og:title" content="${titleMatch[1]}"`);
+      pageHtml = pageHtml.replace(/<meta name="twitter:title" content="[^"]*"/, `<meta name="twitter:title" content="${titleMatch[1]}"`);
+    }
 
-      if (titleTag) {
-        pageHtml = pageHtml.replace(/<title>[\s\S]*?<\/title>/, titleTag);
-      }
-      if (metaTags || linkTags) {
-        pageHtml = pageHtml.replace('</head>', `${metaTags}\n${linkTags}\n</head>`);
-      }
+    const descMatch = appHtml.match(/<meta name="description" content="([^"]*)"/);
+    if (descMatch) {
+      pageHtml = pageHtml.replace(/<meta name="description" content="[^"]*"/, `<meta name="description" content="${descMatch[1]}"`);
+      pageHtml = pageHtml.replace(/<meta property="og:description" content="[^"]*"/, `<meta property="og:description" content="${descMatch[1]}"`);
+      pageHtml = pageHtml.replace(/<meta name="twitter:description" content="[^"]*"/, `<meta name="twitter:description" content="${descMatch[1]}"`);
+    }
+
+    const canonicalMatch = appHtml.match(/<link rel="canonical" href="([^"]*)"/);
+    if (canonicalMatch) {
+      pageHtml = pageHtml.replace(/<link rel="canonical" href="[^"]*"/, `<link rel="canonical" href="${canonicalMatch[1]}"`);
+      pageHtml = pageHtml.replace(/<meta property="og:url" content="[^"]*"/, `<meta property="og:url" content="${canonicalMatch[1]}"`);
+      pageHtml = pageHtml.replace(/<meta name="twitter:url" content="[^"]*"/, `<meta name="twitter:url" content="${canonicalMatch[1]}"`);
+    }
+
+    const preloadMatch = appHtml.match(/<link rel="preload" as="image" href="([^"]*)"[^>]*\/>/);
+    if (preloadMatch) {
+      pageHtml = pageHtml.replace('</head>', `    <link rel="preload" as="image" href="${preloadMatch[1]}" type="image/webp" fetchpriority="high" />\n  </head>`);
     }
 
     const dirPath = route === '/' ? DIST_DIR : path.join(DIST_DIR, route.replace(/^\//, ''));

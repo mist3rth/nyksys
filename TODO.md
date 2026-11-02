@@ -3,6 +3,8 @@
 ## 🔒 Sécurité & Headers HTTP
 - [x] Définir les en-têtes HTTP requis pour la note A/A+ sur securityheaders.com
 - [x] Configurer `vercel.json` avec CSP, HSTS, X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy, X-XSS-Protection et cleanUrls
+- [x] Nettoyer les directives Permissions-Policy non reconnues par les navigateurs modernes (`vr`, `interest-cohort`, `browsing-topics` remplacés par des directives W3C valides)
+- [x] Remplacer le preload d'image global par des preloads d'images contextuels par route (suppression du warning unused preload sur `/services`, `/contact`, etc.)
 - [x] Valider le déploiement sur Vercel et vérifier les en-têtes de sécurité en production
 
 ## ⚡ Rendu, SEO & Navigation (BMAD)

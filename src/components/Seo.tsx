@@ -7,6 +7,7 @@ export interface SeoProps {
   url?: string;
   image?: string;
   type?: string;
+  preloadImage?: string;
 }
 
 const BASE_URL = 'https://nyksys.fr';
@@ -17,7 +18,8 @@ export const Seo: React.FC<SeoProps> = ({
   description,
   url = '',
   image = DEFAULT_IMAGE,
-  type = 'website'
+  type = 'website',
+  preloadImage
 }) => {
   const fullUrl = url.startsWith('http') ? url : `${BASE_URL}${url.startsWith('/') ? url : `/${url}`}`;
   const fullImageUrl = image.startsWith('http') ? image : `${BASE_URL}${image.startsWith('/') ? image : `/${image}`}`;
@@ -27,6 +29,9 @@ export const Seo: React.FC<SeoProps> = ({
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={fullUrl} />
+      {preloadImage && (
+        <link rel="preload" as="image" href={preloadImage} type="image/webp" />
+      )}
 
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />

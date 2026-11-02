@@ -110,11 +110,13 @@ export default function App({ initialPath }: AppProps = {}) {
   // Compute SEO props for the current route
   const seoProps = React.useMemo(() => {
     if (activeProject) {
+      const pImg = activeProject.heroImage || activeProject.highlightImage || '/hero-home.webp';
       return {
         title: `${activeProject.fullTitle} — Nyksys | Architecture d'Intérieur`,
-        description: `${activeProject.fullTitle} : ${activeProject.infoText.slice(0, 150)}...`,
+        description: `${activeProject.infoText.slice(0, 150)}...`,
         url: `/projets/${activeProject.slug}`,
-        image: activeProject.heroImage || activeProject.highlightImage || '/hero-home.webp',
+        image: pImg,
+        preloadImage: pImg,
         type: 'article',
       };
     } else if (currentPath === '/contact') {
@@ -123,6 +125,7 @@ export default function App({ initialPath }: AppProps = {}) {
         description: "Prenez contact avec les architectes du studio Nyksys (Place Vendôme, Paris). Conception d'espaces intérieurs d'exception et suivi sur-mesure de vos projets résidentiels.",
         url: '/contact',
         image: '/contact-hero.webp',
+        preloadImage: '/contact-hero.webp',
       };
     } else if (currentPath === '/services') {
       return {
@@ -130,6 +133,7 @@ export default function App({ initialPath }: AppProps = {}) {
         description: "Découvrez l'ensemble de nos services d'architecture d'intérieur : conception sur-mesure, space planning, ébénisterie d'art, éclairage architectural et maîtrise d'œuvre.",
         url: '/services',
         image: '/services-hero.webp',
+        preloadImage: '/services-hero.webp',
       };
     } else if (currentPath === '/a-propos' || currentPath === '/about') {
       return {
@@ -137,6 +141,7 @@ export default function App({ initialPath }: AppProps = {}) {
         description: "Découvrez l'histoire et la philosophie du studio d'architecture d'intérieur Nyksys. Élégance intemporelle, maîtrise des volumes et exigence artisanale.",
         url: '/a-propos',
         image: '/about-hero.webp',
+        preloadImage: '/about-hero.webp?v=1',
       };
     } else if (currentPath === '/projets' || currentPath === '/projects') {
       return {
@@ -144,6 +149,7 @@ export default function App({ initialPath }: AppProps = {}) {
         description: "Explorez les réalisations et résidences d'exception conçues par le studio Nyksys. Function meets elegance.",
         url: '/projets',
         image: '/projects-hero.webp',
+        preloadImage: '/projects-hero.webp',
       };
     } else {
       return {
@@ -151,6 +157,7 @@ export default function App({ initialPath }: AppProps = {}) {
         description: "Là où commencent les intérieurs intemporels. Studio d'architecture d'intérieur haut de gamme : conception sur-mesure, space planning et résidences d'exception.",
         url: '/',
         image: '/hero-home.webp',
+        preloadImage: '/hero-home.webp?v=2',
       };
     }
   }, [currentPath, activeProject]);

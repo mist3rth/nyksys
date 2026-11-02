@@ -26,7 +26,7 @@ Pour obtenir la note **A / A+** sur [securityheaders.com](https://securityheader
 - **X-Content-Type-Options :** `nosniff`
 - **X-Frame-Options :** `DENY`
 - **Referrer-Policy :** `strict-origin-when-cross-origin`
-- **Permissions-Policy :** `camera=(), microphone=(), geolocation=(), payment=(), usb=(), vr=(), interest-cohort=(), browsing-topics=()`
+- **Permissions-Policy :** `camera=(), microphone=(), geolocation=(), payment=(), usb=(), display-capture=(), accelerometer=(), gyroscope=(), magnetometer=(), xr-spatial-tracking=()`
 - **X-XSS-Protection :** `1; mode=block`
 - **cleanUrls :** `true` (résolution directe des fichiers statiques sans extension ni trailing slash).
 
